@@ -131,10 +131,10 @@
     <section class="card">
       <h2><span class="n">2</span>Мероприятие</h2>
       <div class="row">
-        <label class="f"><span class="req">Город</span><input type="text" name="city" required placeholder="Екатеринбург"></label>
-        <label class="f"><span class="req">Площадка</span><input type="text" name="venue" required placeholder="Свобода Concert Hall"></label>
+        <label class="f"><span class="req">Город</span><input type="text" name="city" required data-cyr placeholder="Екатеринбург"></label>
+        <label class="f"><span class="req">Площадка</span><input type="text" name="venue" required placeholder="Свобода, концерт-холл"></label>
       </div>
-      <label class="f"><span class="req">Адрес площадки</span><input type="text" name="venue_addr" required placeholder="ул. Черкасская, 12А"></label>
+      <label class="f"><span class="req">Адрес площадки</span><input type="text" name="venue_addr" required data-cyr placeholder="ул. Черкасская, 12А"></label>
       <label class="f"><span>Ссылка на площадку / сайт</span><input type="text" name="venue_link" placeholder="https://…"></label>
       <div class="row">
         <label class="f"><span class="req">Дата</span><input type="date" name="date" required></label>
@@ -155,36 +155,36 @@
       </div>
       <label class="file" id="filebox"><input type="file" id="file" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx"><span id="filelbl">📎 Прикрепить карточку предприятия / скриншот реквизитов<br><small>до 3 файлов, PDF, фото, Word — до 10 МБ каждый. Тогда поля ниже можно пропустить.</small></span></label>
       <div class="divider">или заполните вручную</div>
-      <label class="f"><span class="req rq" id="orglbl">Полное наименование</span><input type="text" name="org" placeholder="ООО «Название» / ИП Иванов Иван Иванович"></label>
+      <label class="f"><span class="req rq" id="orglbl">Полное наименование</span><input type="text" name="org" data-cyr placeholder="ООО «Название» / ИП Иванов Иван Иванович"></label>
       <div class="row">
-        <label class="f"><span class="req rq">ИНН</span><input type="text" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" placeholder="10 или 12 цифр"></label>
-        <label class="f" data-for="Юрлицо"><span class="req rq">КПП</span><input type="text" name="kpp" inputmode="numeric" placeholder="9 цифр"></label>
-        <label class="f" data-for="Юрлицо ИП"><span class="req rq">ОГРН / ОГРНИП</span><input type="text" name="ogrn" inputmode="numeric" placeholder="13 или 15 цифр"></label>
+        <label class="f"><span class="req rq">ИНН</span><input type="text" name="inn" inputmode="numeric" data-digits="12" pattern="\d{10}|\d{12}" data-msg="ИНН — 10 цифр для юрлица или 12 для ИП" placeholder="10 или 12 цифр"></label>
+        <label class="f" data-for="Юрлицо"><span class="req rq">КПП</span><input type="text" name="kpp" inputmode="numeric" data-digits="9" pattern="\d{9}" data-msg="КПП — ровно 9 цифр" placeholder="9 цифр"></label>
+        <label class="f" data-for="Юрлицо ИП"><span class="req rq">ОГРН / ОГРНИП</span><input type="text" name="ogrn" inputmode="numeric" data-digits="15" pattern="\d{13}|\d{15}" data-msg="ОГРН — 13 цифр, ОГРНИП — 15 цифр" placeholder="13 или 15 цифр"></label>
       </div>
-      <label class="f"><span class="req rq" id="addrlbl">Юридический адрес</span><input type="text" name="addr" placeholder="индекс, город, улица, дом"></label>
-      <label class="f" data-for="Юрлицо"><span class="req rq">Подписант <small>ФИО, должность, на основании чего действует</small></span><input type="text" name="signer" placeholder="Генеральный директор Иванов Иван Иванович, Устав"></label>
+      <label class="f"><span class="req rq" id="addrlbl">Юридический адрес</span><input type="text" name="addr" data-cyr placeholder="индекс, город, улица, дом"></label>
+      <label class="f" data-for="Юрлицо"><span class="req rq">Подписант <small>ФИО, должность, на основании чего действует</small></span><input type="text" name="signer" data-cyr placeholder="Генеральный директор Иванов Иван Иванович, Устав"></label>
       <div class="row">
-        <label class="f"><span class="req rq">Расчётный счёт</span><input type="text" name="rs" inputmode="numeric" placeholder="20 цифр"></label>
-        <label class="f"><span class="req rq">Банк</span><input type="text" name="bank" placeholder="АО «Альфа-Банк»"></label>
+        <label class="f"><span class="req rq">Расчётный счёт</span><input type="text" name="rs" inputmode="numeric" data-digits="20" pattern="\d{20}" data-msg="Расчётный счёт — ровно 20 цифр" placeholder="20 цифр"></label>
+        <label class="f"><span class="req rq">Банк</span><input type="text" name="bank" data-cyr placeholder="АО «Альфа-Банк»"></label>
       </div>
       <div class="row" style="margin-bottom:-16px">
-        <label class="f"><span class="req rq">БИК</span><input type="text" name="bik" inputmode="numeric" placeholder="9 цифр"></label>
-        <label class="f"><span class="req rq">Корр. счёт</span><input type="text" name="ks" inputmode="numeric" placeholder="20 цифр"></label>
+        <label class="f"><span class="req rq">БИК</span><input type="text" name="bik" inputmode="numeric" data-digits="9" pattern="\d{9}" data-msg="БИК — ровно 9 цифр" placeholder="9 цифр"></label>
+        <label class="f"><span class="req rq">Корр. счёт</span><input type="text" name="ks" inputmode="numeric" data-digits="20" pattern="\d{20}" data-msg="Корреспондентский счёт — ровно 20 цифр" placeholder="20 цифр"></label>
       </div>
     </section>
 
     <section class="card">
       <h2><span class="n">4</span>Контакты</h2>
       <div class="row">
-        <label class="f"><span class="req">Контактное лицо организатора</span><input type="text" name="name" required placeholder="Имя Фамилия"></label>
-        <label class="f"><span class="req">Телефон</span><input type="tel" name="phone" required placeholder="+7 900 000-00-00"></label>
+        <label class="f"><span class="req">Контактное лицо организатора</span><input type="text" name="name" required data-cyr placeholder="Имя Фамилия"></label>
+        <label class="f"><span class="req">Телефон</span><input type="tel" name="phone" required data-phone pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" data-msg="Телефон — 10 цифр после +7" placeholder="+7 (900) 000-00-00"></label>
       </div>
       <div class="row">
         <label class="f"><span class="req">E-mail</span><input type="email" name="email" required placeholder="name@company.ru"></label>
         <label class="f"><span>Telegram</span><input type="text" name="tg" placeholder="@username"></label>
       </div>
       <label class="f"><span>Контактное лицо для обмена документами <small>если другой человек</small></span><input type="text" name="doc_contact" placeholder="Имя, телефон, почта, Telegram"></label>
-      <label class="f"><span>Представитель организатора на площадке в день концерта <small>ФИО и телефон — впишем в договор; если ещё не известен, сообщите позже</small></span><input type="text" name="rep" placeholder="Имя Фамилия, +7 900 000-00-00"></label>
+      <label class="f"><span>Представитель организатора на площадке в день концерта <small>ФИО и телефон — впишем в договор; если ещё не известен, сообщите позже</small></span><input type="text" name="rep" data-cyr placeholder="Имя Фамилия, +7 900 000-00-00"></label>
       <label class="f"><span class="req">Электронный документооборот</span></label>
       <div class="opts two" style="margin-bottom:0">
         <label class="opt"><input type="radio" name="edo" value="Диадок" required><span class="dot"></span><span><b>Диадок</b></span></label>
@@ -192,7 +192,7 @@
         <label class="opt"><input type="radio" name="edo" value="Другой оператор"><span class="dot"></span><span><b>Другой оператор</b><small>укажите в комментарии</small></span></label>
         <label class="opt"><input type="radio" name="edo" value="Нет ЭДО"><span class="dot"></span><span><b>Нет ЭДО</b><small>сканы + оригиналы почтой</small></span></label>
       </div>
-      <label class="f" id="postf" style="display:none;margin:16px 0 0"><span class="req">Почтовый адрес для оригиналов документов</span><input type="text" name="post_addr" placeholder="индекс, город, улица, дом, получатель"></label>
+      <label class="f" id="postf" style="display:none;margin:16px 0 0"><span class="req">Почтовый адрес для оригиналов документов</span><input type="text" name="post_addr" data-cyr placeholder="индекс, город, улица, дом, получатель"></label>
     </section>
 
     <section class="card">
@@ -214,7 +214,7 @@
   <div class="card done" id="done">
     <div class="ok">✔</div>
     <h2>Данные получены</h2>
-    <p id="donemsg">Подготовим договор и пришлём на почту.</p>
+    <p id="donemsg">Спасибо! Подготовим договор и пришлём на вашу почту.</p>
   </div>
 
   <p class="foot">Вопросы: Антон Петрушенко, концертный директор · <a href="tel:+79090898880">+7 909 089-88-80</a> · <a id="footlink" href="#">@petrush74</a></p>
@@ -248,6 +248,40 @@ $('#file').addEventListener('change', async e => {
   else { box.classList.remove('has'); lbl.innerHTML = '📎 Прикрепить карточку предприятия / скриншот реквизитов<br><small>до 3 файлов, PDF, фото, Word — до 10 МБ каждый. Тогда поля ниже можно пропустить.</small>'; }
   toggleReq();
 });
+
+/* ---- ввод: только цифры, маска телефона, только кириллица, русские сообщения об ошибках ---- */
+document.querySelectorAll('input[data-digits]').forEach(i => {
+  i.maxLength = +i.dataset.digits;
+  i.addEventListener('input', () => { i.value = i.value.replace(/\D/g, '').slice(0, +i.dataset.digits); i.setCustomValidity(''); });
+});
+const ph = document.querySelector('input[data-phone]');
+ph.addEventListener('input', () => {
+  let d = ph.value.replace(/\D/g, '');
+  if (d.startsWith('8')) d = '7' + d.slice(1);
+  if (d.startsWith('7')) d = d.slice(1);
+  d = d.slice(0, 10);
+  let v = '+7';
+  if (d.length) v += ' (' + d.slice(0, 3);
+  if (d.length >= 3) v += ') ' + d.slice(3, 6);
+  if (d.length >= 6) v += '-' + d.slice(6, 8);
+  if (d.length >= 8) v += '-' + d.slice(8, 10);
+  ph.value = d.length ? v : ''; ph.setCustomValidity('');
+});
+document.querySelectorAll('input[data-cyr]').forEach(i => {
+  i.addEventListener('input', () => {
+    const c = i.value.replace(/[A-Za-z]/g, '');
+    if (c !== i.value) { i.value = c; i.dataset.warn = 1; i.title = 'Только русские буквы'; }
+    i.setCustomValidity('');
+  });
+});
+document.querySelectorAll('input, textarea').forEach(i => {
+  i.addEventListener('invalid', () => {
+    if (i.validity.valueMissing) i.setCustomValidity(i.type === 'checkbox' ? 'Нужно согласие' : 'Заполните это поле');
+    else if (i.validity.patternMismatch || i.validity.typeMismatch) i.setCustomValidity(i.dataset.msg || (i.type === 'email' ? 'Проверьте e-mail' : 'Проверьте формат'));
+  });
+  i.addEventListener('input', () => i.setCustomValidity(''));
+});
+
 function ctype() { return (document.querySelector('input[name=ctype]:checked') || {}).value || 'Юрлицо'; }
 function toggleReq() {
   const t = ctype();
@@ -307,7 +341,6 @@ $('#f').addEventListener('submit', async e => {
     const j = await r.json();
     if (!j.ok) throw new Error(j.error || 'bad response');
     f.style.display = 'none'; $('#done').style.display = 'block';
-    if (j.id) $('#donemsg').textContent = 'Заявка №' + j.id + '. Подготовим договор и пришлём на почту.';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (ex) {
     err.textContent = 'Не удалось отправить автоматически (' + ex.message + ').'; err.style.display = 'block';
