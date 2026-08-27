@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Данные для договора — АК-47 / TGK</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d; --bg2:#121216; --card:#16161b; --line:#26262e; --line2:#34343e;
+    --text:#f3f1ea; --muted:#8f8f9c; --accent:#ffd60a; --accent2:#ffb800; --accent-text:#0b0b0d;
+    --err:#ff5c5c; --ok:#3ddc84; --field:#0f0f13;
+    --display:'Unbounded', 'Manrope', Arial, sans-serif;
+    --body:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 400px at 50% -80px, rgba(255,214,10,.14), transparent 70%)}
+  .wrap{max-width:760px;margin:0 auto;padding:36px 18px 80px}
+
+  /* ---------- шапка ---------- */
+  .hero{text-align:center;margin-bottom:34px}
+  .logos{display:flex;justify-content:center;align-items:center;gap:22px;margin-bottom:26px}
+  .logo{height:56px;display:flex;align-items:center}
+  .logo img{height:56px;width:auto;max-width:200px;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(0,0,0,.6))}
+  .logo .word{font:900 22px/1 var(--display);letter-spacing:.06em;padding:14px 18px;border:2px solid var(--text);border-radius:6px}
+  .logo .word.tgk{border-color:var(--accent);color:var(--accent)}
+  .x{font:700 18px/1 var(--display);color:var(--muted)}
+  .kicker{font:700 12px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font:900 clamp(26px,5.6vw,40px)/1.08 var(--display);margin:0 0 14px;letter-spacing:-.01em}
+  .lead{color:var(--muted);margin:0 auto;max-width:560px;font-size:16px}
+
+  /* ---------- карточки ---------- */
+  .card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:26px 24px;margin-bottom:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  @media (max-width:520px){.card{padding:22px 16px;border-radius:16px}}
+  .card h2{display:flex;align-items:center;gap:14px;font:700 17px/1.2 var(--display);margin:0 0 20px;letter-spacing:.01em}
+  .card h2 .n{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-text);display:grid;place-items:center;font:900 15px/1 var(--display)}
+
+  label.f{display:block;margin-bottom:16px}
+  label.f>span{display:block;font-weight:600;margin-bottom:7px;font-size:14px;color:#d9d7cf}
+  label.f>span small{font-weight:500;color:var(--muted)}
+  .req::after{content:" *";color:var(--accent)}
+  input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],input[type=time],textarea{
+    width:100%;padding:13px 14px;border:1px solid var(--line2);border-radius:12px;background:var(--field);color:var(--text);font:inherit;outline:none;
+    transition:border-color .15s, box-shadow .15s; color-scheme:dark}
+  input::placeholder,textarea::placeholder{color:#5b5b68}
+  input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,214,10,.15)}
+  textarea{min-height:100px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:520px){.row{grid-template-columns:1fr}}
+
+  .opts{display:grid;gap:10px;margin:-8px 0 18px}
+  .opts.two{grid-template-columns:1fr 1fr}
+  @media (max-width:560px){.opts.two{grid-template-columns:1fr}}
+  .opt{position:relative;display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line2);border-radius:14px;cursor:pointer;background:var(--field);transition:border-color .15s, background .15s}
+  .opt:hover{border-color:#4a4a58}
+  .opt:has(input:checked){border-color:var(--accent);background:rgba(255,214,10,.07);box-shadow:inset 0 0 0 1px var(--accent)}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .dot{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid #4a4a58;display:grid;place-items:center}
+  .opt:has(input:checked) .dot{border-color:var(--accent)}
+  .opt:has(input:checked) .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .opt b{display:block;font-weight:700;font-size:15px}
+  .opt small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  .opt .mini{flex:none;height:28px;width:auto;max-width:90px;object-fit:contain;margin-left:auto;opacity:.9}
+
+  .hint{font-size:13px;color:var(--muted);margin:-6px 0 16px}
+  .chk{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:#d9d7cf;cursor:pointer}
+  .chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+  .file{display:block;border:1.5px dashed var(--line2);border-radius:14px;padding:18px 16px;text-align:center;color:var(--muted);font-size:14px;cursor:pointer;transition:border-color .15s;margin-bottom:18px}
+  .file:hover{border-color:var(--accent)}
+  .file small{display:block;margin-top:4px;color:var(--muted)}
+  .file.has{border-style:solid;border-color:var(--ok);color:var(--text)}
+  .file input{display:none}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  a{color:var(--accent)}
+  button{font:inherit;cursor:pointer}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:17px 24px;border-radius:14px;border:0;font:700 15px/1 var(--display);letter-spacing:.02em;text-decoration:none;transition:transform .1s, filter .15s}
+  .btn-main{background:linear-gradient(180deg,var(--accent),var(--accent2));color:var(--accent-text);width:100%;box-shadow:0 10px 30px rgba(255,214,10,.25)}
+  .btn-main:hover{filter:brightness(1.05)} .btn-main:active{transform:translateY(1px)}
+  .btn-main:disabled{opacity:.6;cursor:wait}
+  .btn-alt{background:transparent;color:var(--text);border:1px solid var(--line2);width:100%;font-family:var(--body);font-weight:600}
+  .err{color:var(--err);font-size:14px;margin-top:10px;display:none}
+  .done{display:none;text-align:center;padding:44px 20px}
+  .done .ok{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:rgba(61,220,132,.12);color:var(--ok);display:grid;place-items:center;font-size:34px}
+  .done h2{font:700 24px/1.2 var(--display);margin:8px 0 8px;justify-content:center}
+  .done p{color:var(--muted)}
+  .fallback{display:none;margin-top:14px;gap:10px;flex-direction:column}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+  .foot{color:var(--muted);font-size:13px;text-align:center;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="logos">
+      <div class="logo"><img src="img/ak47.png" alt="АК-47" onerror="this.outerHTML='<span class=word>АК-47</span>'"></div>
+      <span class="x">×</span>
+      <div class="logo"><img src="img/tgk.png" alt="TGK" onerror="this.outerHTML='<span class=&quot;word tgk&quot;>TGK</span>'"></div>
+    </div>
+    <div class="kicker">Концертный директор · Антон Петрушенко</div>
+    <h1>Данные для договора</h1>
+    <p class="lead">Заполните форму — по этим данным мы подготовим договор и пришлём его на вашу почту. Поля со звёздочкой обязательны.</p>
+  </header>
+
+  <form id="f" novalidate>
+    <section class="card">
+      <h2><span class="n">1</span>Исполнитель и формат</h2>
+      <label class="f"><span class="req">Исполнитель</span></label>
+      <div class="opts two">
+        <label class="opt"><input type="radio" name="artist" value="Группа АК-47" required><span class="dot"></span><span><b>Группа АК-47</b><small>Витя АК, Макс АК</small></span></label>
+        <label class="opt"><input type="radio" name="artist" value="Витя АК"><span class="dot"></span><span><b>Витя АК</b><small>сольно</small></span></label>
+        <label class="opt"><input type="radio" name="artist" value="TGK"><span class="dot"></span><span><b>TGK</b><small>Jahmal, Vibe</small></span></label>
+        <label class="opt"><input type="radio" name="artist" value="АК-47 × TGK"><span class="dot"></span><span><b>АК-47 × TGK</b><small>совместная программа</small></span></label>
+      </div>
+      <label class="f"><span class="req">Формат мероприятия</span></label>
+      <div class="opts two" style="margin-bottom:0">
+        <label class="opt"><input type="radio" name="format" value="Сольный концерт" required><span class="dot"></span><span><b>Сольный концерт</b></span></label>
+        <label class="opt"><input type="radio" name="format" value="Клубное выступление"><span class="dot"></span><span><b>Клубное выступление</b><small>в рамках вечеринки</small></span></label>
+        <label class="opt"><input type="radio" name="format" value="Корпоратив"><span class="dot"></span><span><b>Корпоратив</b><small>частное мероприятие</small></span></label>
+        <label class="opt"><input type="radio" name="format" value="Фестиваль"><span class="dot"></span><span><b>Фестиваль</b><small>сборный концерт</small></span></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">2</span>Мероприятие</h2>
+      <div class="row">
+        <label class="f"><span class="req">Город</span><input type="text" name="city" required placeholder="Екатеринбург"></label>
+        <label class="f"><span class="req">Площадка</span><input type="text" name="venue" required placeholder="Свобода Concert Hall"></label>
+      </div>
+      <label class="f"><span class="req">Адрес площадки</span><input type="text" name="venue_addr" required placeholder="ул. Черкасская, 12А"></label>
+      <label class="f"><span>Ссылка на площадку / сайт</span><input type="text" name="venue_link" placeholder="https://…"></label>
+      <div class="row">
+        <label class="f"><span class="req">Дата</span><input type="date" name="date" required></label>
+        <label class="f"><span>Время выхода на сцену</span><input type="time" name="time"></label>
+      </div>
+      <div class="row" style="margin-bottom:-16px">
+        <label class="f"><span class="req">Вместимость площадки, чел.</span><input type="number" name="capacity" min="1" required placeholder="1500"></label>
+        <label class="f"><span>Название мероприятия <small>если фестиваль / сборный</small></span><input type="text" name="event_name" placeholder="Фестиваль «…»"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">3</span>Реквизиты заказчика</h2>
+      <label class="f"><span class="req">Кто заключает договор</span></label>
+      <div class="opts two" id="ctype">
+        <label class="opt"><input type="radio" name="ctype" value="Юрлицо" required checked><span class="dot"></span><span><b>Юридическое лицо</b><small>ООО, АО и т.п.</small></span></label>
+        <label class="opt"><input type="radio" name="ctype" value="ИП"><span class="dot"></span><span><b>ИП</b></span></label>
+      </div>
+      <label class="file" id="filebox"><input type="file" id="file" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx"><span id="filelbl">📎 Прикрепить карточку предприятия / скриншот реквизитов<br><small>до 3 файлов, PDF, фото, Word — до 10 МБ каждый. Тогда поля ниже можно пропустить.</small></span></label>
+      <div class="divider">или заполните вручную</div>
+      <label class="f"><span class="req rq" id="orglbl">Полное наименование</span><input type="text" name="org" placeholder="ООО «Название» / ИП Иванов Иван Иванович"></label>
+      <div class="row">
+        <label class="f"><span class="req rq">ИНН</span><input type="text" name="inn" inputmode="numeric" pattern="\d{10}|\d{12}" placeholder="10 или 12 цифр"></label>
+        <label class="f" data-for="Юрлицо"><span class="req rq">КПП</span><input type="text" name="kpp" inputmode="numeric" placeholder="9 цифр"></label>
+        <label class="f" data-for="Юрлицо ИП"><span class="req rq">ОГРН / ОГРНИП</span><input type="text" name="ogrn" inputmode="numeric" placeholder="13 или 15 цифр"></label>
+      </div>
+      <label class="f"><span class="req rq" id="addrlbl">Юридический адрес</span><input type="text" name="addr" placeholder="индекс, город, улица, дом"></label>
+      <label class="f" data-for="Юрлицо"><span class="req rq">Подписант <small>ФИО, должность, на основании чего действует</small></span><input type="text" name="signer" placeholder="Генеральный директор Иванов Иван Иванович, Устав"></label>
+      <div class="row">
+        <label class="f"><span class="req rq">Расчётный счёт</span><input type="text" name="rs" inputmode="numeric" placeholder="20 цифр"></label>
+        <label class="f"><span class="req rq">Банк</span><input type="text" name="bank" placeholder="АО «Альфа-Банк»"></label>
+      </div>
+      <div class="row" style="margin-bottom:-16px">
+        <label class="f"><span class="req rq">БИК</span><input type="text" name="bik" inputmode="numeric" placeholder="9 цифр"></label>
+        <label class="f"><span class="req rq">Корр. счёт</span><input type="text" name="ks" inputmode="numeric" placeholder="20 цифр"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">4</span>Контакты</h2>
+      <div class="row">
+        <label class="f"><span class="req">Контактное лицо организатора</span><input type="text" name="name" required placeholder="Имя Фамилия"></label>
+        <label class="f"><span class="req">Телефон</span><input type="tel" name="phone" required placeholder="+7 900 000-00-00"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span class="req">E-mail</span><input type="email" name="email" required placeholder="name@company.ru"></label>
+        <label class="f"><span>Telegram</span><input type="text" name="tg" placeholder="@username"></label>
+      </div>
+      <label class="f"><span>Контактное лицо для обмена документами <small>если другой человек</small></span><input type="text" name="doc_contact" placeholder="Имя, телефон, почта, Telegram"></label>
+      <label class="f"><span>Представитель организатора на площадке в день концерта <small>ФИО и телефон — впишем в договор; если ещё не известен, сообщите позже</small></span><input type="text" name="rep" placeholder="Имя Фамилия, +7 900 000-00-00"></label>
+      <label class="f"><span class="req">Электронный документооборот</span></label>
+      <div class="opts two" style="margin-bottom:0">
+        <label class="opt"><input type="radio" name="edo" value="Диадок" required><span class="dot"></span><span><b>Диадок</b></span></label>
+        <label class="opt"><input type="radio" name="edo" value="СБИС"><span class="dot"></span><span><b>СБИС</b></span></label>
+        <label class="opt"><input type="radio" name="edo" value="Другой оператор"><span class="dot"></span><span><b>Другой оператор</b><small>укажите в комментарии</small></span></label>
+        <label class="opt"><input type="radio" name="edo" value="Нет ЭДО"><span class="dot"></span><span><b>Нет ЭДО</b><small>сканы + оригиналы почтой</small></span></label>
+      </div>
+      <label class="f" id="postf" style="display:none;margin:16px 0 0"><span class="req">Почтовый адрес для оригиналов документов</span><input type="text" name="post_addr" placeholder="индекс, город, улица, дом, получатель"></label>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">5</span>Комментарий</h2>
+      <label class="f" style="margin:0"><span>Что ещё нам нужно знать</span><textarea name="comment" placeholder="Особые условия, спонсоры, ТВ-съёмка, несколько дат…"></textarea></label>
+      <label class="chk" style="margin-top:16px"><input type="checkbox" name="consent" value="да" required> <span class="req">Даю согласие на обработку персональных данных для подготовки и исполнения договора (152-ФЗ)</span></label>
+      <div class="hp" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    </section>
+
+    <button class="btn btn-main" id="send" type="submit">Отправить данные</button>
+    <div class="err" id="err"></div>
+    <div class="fallback" id="fallback">
+      <p class="hint" style="margin:0">Автоматическая отправка не сработала — отправьте данные напрямую:</p>
+      <a class="btn btn-alt" id="tgbtn" href="#" target="_blank" rel="noopener">✈️ Написать в Telegram</a>
+      <a class="btn btn-alt" id="mailbtn" href="#">✉️ Отправить на почту</a>
+    </div>
+  </form>
+
+  <div class="card done" id="done">
+    <div class="ok">✔</div>
+    <h2>Данные получены</h2>
+    <p id="donemsg">Подготовим договор и пришлём на почту.</p>
+  </div>
+
+  <p class="foot">Вопросы: Антон Петрушенко, концертный директор · <a href="tel:+79090898880">+7 909 089-88-80</a> · <a id="footlink" href="#">@petrush74</a></p>
+</div>
+
+<script>
+/* ===== НАСТРОЙКИ — заполнить после развёртывания Apps Script ===== */
+const CONFIG = {
+  ENDPOINT: 'https://script.google.com/macros/s/AKfycbxbGap2OFUsLchZswNxtJSIcCCHkT5Nu50qEQnCjV28WiTTuameOuVwtfN1yqtDlgWUuQ/exec',
+  TG_USERNAME: 'petrush74',           // Telegram без @ — для запасной кнопки и подвала
+  EMAIL: 'studioyour74@gmail.com'     // почта — запасной вариант
+};
+/* Логотипы: положите файлы img/ak47.png и img/tgk.png рядом с index.html (PNG с прозрачным фоном,
+   высота от 200px). Пока файлов нет — показываются текстовые надписи. */
+/* ================================================================== */
+
+const $ = s => document.querySelector(s);
+$('#footlink').href = 'https://t.me/' + CONFIG.TG_USERNAME;
+document.querySelector('input[name=date]').min = new Date().toISOString().slice(0, 10);
+
+let files = [];
+$('#file').addEventListener('change', async e => {
+  const list = Array.from(e.target.files).slice(0, 3); files = [];
+  const box = $('#filebox'), lbl = $('#filelbl');
+  for (const f of list) {
+    if (f.size > 10 * 1024 * 1024) { alert('Файл больше 10 МБ: ' + f.name); continue; }
+    const b64 = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.readAsDataURL(f); });
+    files.push({ name: f.name, type: f.type || 'application/octet-stream', data: b64 });
+  }
+  if (files.length) { box.classList.add('has'); lbl.textContent = '✔ ' + files.map(f => f.name).join(', ') + ' — поля реквизитов можно не заполнять'; }
+  else { box.classList.remove('has'); lbl.innerHTML = '📎 Прикрепить карточку предприятия / скриншот реквизитов<br><small>до 3 файлов, PDF, фото, Word — до 10 МБ каждый. Тогда поля ниже можно пропустить.</small>'; }
+  toggleReq();
+});
+function ctype() { return (document.querySelector('input[name=ctype]:checked') || {}).value || 'Юрлицо'; }
+function toggleReq() {
+  const t = ctype();
+  document.querySelectorAll('[data-for]').forEach(el => el.style.display = el.dataset.for.split(' ').includes(t) ? '' : 'none');
+  $('#orglbl').textContent = t === 'Юрлицо' ? 'Полное наименование' : 'ИП — ФИО полностью';
+  document.querySelector('input[name=org]').placeholder = t === 'Юрлицо' ? 'ООО «Название»' : 'Иванов Иван Иванович';
+  document.querySelectorAll('.rq').forEach(sp => {
+    const wrap = sp.closest('label'), inp = wrap.querySelector('input');
+    const hidden = wrap.style.display === 'none';
+    const need = !files.length && !hidden;
+    inp.required = need; sp.classList.toggle('req', need);
+  });
+}
+document.querySelectorAll('input[name=ctype]').forEach(r => r.addEventListener('change', toggleReq));
+document.querySelectorAll('input[name=edo]').forEach(r => r.addEventListener('change', () => {
+  const no = document.querySelector('input[name=edo]:checked').value === 'Нет ЭДО';
+  $('#postf').style.display = no ? '' : 'none'; document.querySelector('input[name=post_addr]').required = no;
+}));
+toggleReq();
+
+function collect() {
+  const fd = new FormData($('#f')), o = {};
+  fd.forEach((v, k) => o[k] = String(v).trim());
+  if (files.length) o.files = files;
+  o.page = location.href; o.sent_at = new Date().toISOString();
+  return o;
+}
+function asText(o) {
+  return [
+    'ДАННЫЕ ДЛЯ ДОГОВОРА',
+    'Исполнитель: ' + o.artist + ' · ' + o.format + (o.event_name ? ' · ' + o.event_name : ''),
+    'Город: ' + o.city + ' — ' + o.venue + ', ' + o.venue_addr + (o.venue_link ? ' · ' + o.venue_link : ''),
+    'Дата: ' + o.date + (o.time ? ' ' + o.time : '') + ' · вместимость ' + o.capacity,
+    'Заказчик (' + o.ctype + '): ' + o.org + (o.inn ? ', ИНН ' + o.inn : '') + (o.kpp ? ', КПП ' + o.kpp : '') + (o.ogrn ? ', ОГРН ' + o.ogrn : ''),
+    o.addr ? 'Адрес: ' + o.addr : '', o.signer ? 'Подписант: ' + o.signer : '', 
+    o.rs ? 'р/с ' + o.rs + ' в ' + o.bank + ', БИК ' + o.bik + ', к/с ' + o.ks : '',
+    'Контакт: ' + o.name + ', ' + o.phone + ', ' + o.email + (o.tg ? ', ' + o.tg : ''),
+    o.doc_contact ? 'Документы: ' + o.doc_contact : '', o.rep ? 'Представитель на площадке: ' + o.rep : '', 'ЭДО: ' + o.edo + (o.post_addr ? ' · почтовый адрес: ' + o.post_addr : ''),
+    o.comment ? 'Комментарий: ' + o.comment : '', files.length ? '(файлы реквизитов прикреплю отдельно)' : ''
+  ].filter(Boolean).join('\n');
+}
+function showFallback(o) {
+  const t = asText(o);
+  $('#tgbtn').href = 'https://t.me/' + CONFIG.TG_USERNAME + '?text=' + encodeURIComponent(t);
+  $('#mailbtn').href = 'mailto:' + CONFIG.EMAIL + '?subject=' + encodeURIComponent('Данные для договора: ' + o.city + ' ' + o.date) + '&body=' + encodeURIComponent(t);
+  $('#fallback').style.display = 'flex';
+}
+$('#f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = $('#f'), err = $('#err'); err.style.display = 'none';
+  if (!f.checkValidity()) { f.reportValidity(); return; }
+  const o = collect();
+  if (o.website) return;
+  const btn = $('#send'); btn.disabled = true; btn.textContent = 'Отправляем…';
+  try {
+    const r = await fetch(CONFIG.ENDPOINT, { method: 'POST', body: JSON.stringify(o), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || 'bad response');
+    f.style.display = 'none'; $('#done').style.display = 'block';
+    if (j.id) $('#donemsg').textContent = 'Заявка №' + j.id + '. Подготовим договор и пришлём на почту.';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (ex) {
+    err.textContent = 'Не удалось отправить автоматически (' + ex.message + ').'; err.style.display = 'block';
+    showFallback(o);
+    btn.disabled = false; btn.textContent = 'Попробовать ещё раз';
+  }
+});
+</script>
+</body>
+</html>
